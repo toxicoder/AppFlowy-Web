@@ -59,6 +59,41 @@ Sign up for a free account on <a href="https://appflowy.com">appflowy.com</a>—
 Take charge of your data; no vendor lock-in. Follow our <a href="https://appflowy.com/docs/self-host-appflowy-overview">deployment guide</a> to get started.
 Join our <a href="https://discord.gg/FFmDE99bgA">Discord</a> server to get help!
 
+## Docker Deployment (Recommended for Self-Hosting)
+
+For a simple and flexible deployment, you can use the provided Docker Compose setup. This is the recommended method for self-hosting, especially in a homelab environment with a reverse proxy.
+
+### Prerequisites
+
+-   Docker
+-   Docker Compose
+
+### Quick Start
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/AppFlowy-IO/AppFlowy-Web.git](https://github.com/AppFlowy-IO/AppFlowy-Web.git)
+    cd AppFlowy-Web
+    ```
+
+2.  **Configure your environment:**
+    Copy the example environment file:
+    ```bash
+    cp .env.example .env
+    ```
+    You can edit the `.env` file to change the port the application is exposed on or to add other configurations as needed.
+
+3.  **Run with Docker Compose:**
+    ```bash
+    docker-compose up -d
+    ```
+
+The application will be available at `http://localhost:3001` by default.
+
+### Reverse Proxy Integration
+
+The Docker setup is designed to work with a reverse proxy. The `docker-compose.yml` file is configured to connect the container to an external Docker network named `proxy`. If you use a different network name for your reverse proxy, update the `networks` section in the `docker-compose.yml` file accordingly.
+
 ## Built with 🛠️
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
