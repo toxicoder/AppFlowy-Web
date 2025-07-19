@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  appflowy-web:
+    build: .
+    container_name: appflowy-web
+    restart: unless-stopped
+    ports:
+      - "3001:8080"
+    environment:
+      - PORT=8080
+      # Add other environment variables here
+      # - DATABASE_URL=...
+      # - API_KEY=...
+    volumes:
+      - appflowy_data:/app/data
+    networks:
+      - proxy
+
+volumes:
+  appflowy_data:
+
+networks:
+  proxy:
+    external: true
